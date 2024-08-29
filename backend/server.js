@@ -7,7 +7,11 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin:["https://movie-search-web-application-frontend.vercel.app/"],
+  methods:["POST","GET"],
+  credentials:true
+}));
 app.use(express.json({ limit: '50mb', extended: true })); 
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
