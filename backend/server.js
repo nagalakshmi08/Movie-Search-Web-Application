@@ -8,7 +8,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin:["https://movie-search-web-application-frontend.vercel.app/"],
+  origin:["https://movie-search-web-application-frontend.vercel.app"],
   methods:["POST","GET"],
   credentials:true
 }));
