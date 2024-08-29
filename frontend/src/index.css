@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --navbar-height: 64px; /* Default navbar height */
+}
+
+@media (max-width: 768px) {
+    :root {
+        --navbar-height: 80px; /* Navbar height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --navbar-height: 100px; /* Navbar height for even smaller screens */
+    }
+}
+
+.main-content {
+    padding-top: var(--navbar-height);
+}
+
+nav {
+    width: 100%;
+}
+.underline-custom::after {
+    content: '';
+    display: block;
+    width: calc(100% - 2rem); 
+    height: 2px; 
+    background-color: #60a5fa;
+    margin-top: 4px; 
+    margin-left: 1rem; 
+    margin-right: 1rem; 
+  }
