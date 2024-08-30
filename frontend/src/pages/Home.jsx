@@ -6,6 +6,8 @@ import MovieList from '../components/MovieList';
 import MovieDetails from './MovieDetails'; 
 import { ThemeContext } from '../../ThemeContext'; 
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 function Home() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -13,16 +15,20 @@ function Home() {
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    const fetchMoviesFromJson = async () => {
+    const fetchPopularMovies = async () => {
       try {
-        const response = await axios.get('/movies.json');
+        console.log('Fetching popular movies with API key:', API_KEY); 
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+        );
+        console.log('Response from TMDB API:', response.data); 
         setMovies(response.data.results);
       } catch (error) {
-        console.error('Error fetching movies from JSON:', error);
+        console.error('Error fetching popular movies:', error);
       }
     };
 
-    fetchMoviesFromJson();
+    fetchPopularMovies();
   }, []);
 
   const handleSearch = (query) => {
