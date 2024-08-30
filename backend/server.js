@@ -8,8 +8,12 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
-app.use(express.json({ limit: '50mb', extended: true })); 
+app.use(cors({
+  origin: 'https://movie-search-web-application-frontend.onrender.com', // Your frontend domain
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+app.use(express.json({ limit: '50mb', extended: true }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // Routes
