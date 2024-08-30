@@ -11,7 +11,7 @@ const SearchHistory = () => {
     const fetchSearchHistory = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://movie-search-web-application-api.vercel.app/api/user/search-history', {
+        const response = await axios.get('http://localhost:5000/api/user/search-history', {
           headers: {
             'x-auth-token': token
           }
@@ -28,7 +28,7 @@ const SearchHistory = () => {
   const handleDelete = async (query) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete('https://movie-search-web-application-api.vercel.app/api/user/search-history', {
+      await axios.delete('http://localhost:5000/api/user/search-history', {
         headers: {
           'x-auth-token': token,
           'Content-Type': 'application/json'
