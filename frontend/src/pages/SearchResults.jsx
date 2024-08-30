@@ -19,6 +19,7 @@ function SearchResults() {
         const response = await axios.get(
           `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
         );
+        console.log('API Response:', response.data); // Debugging log
         setMovies(response.data.results);
       } catch (error) {
         console.error('Error fetching search results:', error);
@@ -27,6 +28,10 @@ function SearchResults() {
 
     fetchMovies();
   }, [query]);
+
+  useEffect(() => {
+    console.log('Movies state:', movies); // Debugging log
+  }, [movies]);
 
   const handleMovieSelect = (movie) => {
     navigate(`/movie/${movie.id}`);
