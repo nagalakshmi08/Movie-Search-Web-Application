@@ -12,7 +12,7 @@ function Searchbar({ onSearch }) {
       try {
         const token = localStorage.getItem('token');
         await axios.post(
-          'http://localhost:5000/api/user/search-history',
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/search-history`,
           { query },
           {
             headers: {

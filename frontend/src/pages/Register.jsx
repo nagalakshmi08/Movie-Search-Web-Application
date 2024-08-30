@@ -31,11 +31,11 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, formData);
       setResponseMessage('Registration successful!');
       navigate('/login'); 
     } catch (err) {
-      setResponseMessage(err.response.data.msg || 'An error occurred.');
+      setResponseMessage(err.response?.data?.msg || 'An error occurred.');
     }
   };
 
