@@ -9,22 +9,26 @@ function Searchbar({ onSearch }) {
 
   const handleSearch = async () => {
     if (query.trim()) {
-      try {
-        const token = localStorage.getItem('token');
-        await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/user/search-history`,
-          { query },
-          {
-            headers: {
-              'x-auth-token': token,
-            },
-          }
-        );
+      const token = localStorage.getItem('token');
 
-        onSearch(query);
-      } catch (error) {
-        console.error('Error saving search query:', error);
+      if (token) {
+        try {
+          await axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}/api/user/search-history`,
+            { query },
+            {
+              headers: {
+                'x-auth-token': token,
+              },
+            }
+          );
+        } catch (error) {
+          console.error('Error saving search query:', error);
+        }
       }
+
+      // Always call onSearch to display search results
+      onSearch(query);
     }
   };
 
