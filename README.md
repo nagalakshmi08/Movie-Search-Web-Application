@@ -37,3 +37,18 @@
   <li>Image Assets: Movie posters and backdrops are displayed using the image URLs provided by the API.</li>
 </ul>
 
+<h2>Working Videos</h2>
+
+<p>Desktop View</p>
+
+
+https://github.com/user-attachments/assets/56782daa-3ab6-4f63-8b0b-5a3cf629e110
+
+
+<p>Mobile View</p>
+
+
+
+https://github.com/user-attachments/assets/7156b518-df34-4346-b726-9736de37c3db
+
+
