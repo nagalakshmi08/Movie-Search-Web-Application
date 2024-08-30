@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import MovieList from '../components/MovieList';
-import MovieDetails from '../components/MovieDetails';
+import MovieDetails from './MovieDetails';
 import { ThemeContext } from '../../ThemeContext'; 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
