@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import MovieList from '../components/MovieList';
-import MovieDetails from './MovieDetails';
+import MovieDetails from './MovieDetails'; 
 import { ThemeContext } from '../../ThemeContext'; 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -17,9 +17,11 @@ function Home() {
   useEffect(() => {
     const fetchPopularMovies = async () => {
       try {
+        console.log('Fetching popular movies with API key:', API_KEY); // Debugging log
         const response = await axios.get(
           `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
         );
+        console.log('Response from TMDB API:', response.data); // Debugging log
         setMovies(response.data.results);
       } catch (error) {
         console.error('Error fetching popular movies:', error);
