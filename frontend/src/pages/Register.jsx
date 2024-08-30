@@ -31,7 +31,7 @@ const Register = () => {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://movie-search-web-application-api.vercel.app/api/auth/register', formData);
+      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
       setResponseMessage('Registration successful!');
       navigate('/login'); 
     } catch (err) {
