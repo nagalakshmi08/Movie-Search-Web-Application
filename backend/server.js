@@ -1,37 +1,30 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 
+// Connect to database
 connectDB();
 
+// Middleware setup
 app.use(cors({
-  origin:["https://movie-search-web-application-frontend.vercel.app"],
-  methods:["POST","GET"],
-  credentials:true
+  origin: ["https://movie-search-web-application-frontend.vercel.app"],
+  methods: ["POST", "GET"],
+  credentials: true
 }));
-app.use(express.json({ limit: '50mb', extended: true })); 
+app.use(express.json({ limit: '50mb', extended: true }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-app.get('/',(req,res)=>{
+// Test route
+app.get('/', (req, res) => {
   res.json('Hello');
-})
+});
 
-// Routes
+// API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 
-if (process.env.NODE_ENV === 'production') {
-  
-  app.use(express.static('frontend/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  });
-}
-
+// Start the server
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
