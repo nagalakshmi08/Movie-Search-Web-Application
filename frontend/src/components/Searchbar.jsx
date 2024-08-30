@@ -12,7 +12,7 @@ function Searchbar({ onSearch }) {
       try {
         const token = localStorage.getItem('token');
         await axios.post(
-          'https://movie-search-web-application-api.vercel.app/api/user/search-history',
+          'http://localhost:5000/api/user/search-history',
           { query },
           {
             headers: {
