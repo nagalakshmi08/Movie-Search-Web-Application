@@ -41,11 +41,7 @@ function SearchResults() {
       <Navbar onSearch={handleSearch} />
       <div className={`container mx-auto p-4 mt-4 md:mt-0 min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
         <h1 className={`text-xl font-bold mb-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>Search Results for "{query}"</h1>
-        {movies.length > 0 ? (
-          <MovieList movies={movies} onMovieSelect={handleMovieSelect} />
-        ) : (
-          <p className="text-center text-lg">No results found for "{query}".</p>
-        )}
+        <MovieList movies={movies} onMovieSelect={handleMovieSelect} />
       </div>
     </>
   );
